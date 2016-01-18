@@ -82,7 +82,7 @@ describe('vue-loader', function () {
         '<comp-a></comp-a>' +
         '<comp-b></comp-b>'
       )
-      expect(module.data().msg).to.contain('Hello from babel!')
+      expect(module.data().msg).to.contain('Hello from coffee!')
       var style = window.document.querySelector('style').textContent
       expect(style).to.contain('body {\n  font: 100% Helvetica, sans-serif;\n  color: #999;\n}')
       done()
@@ -151,18 +151,21 @@ describe('vue-loader', function () {
         var smc = new SourceMapConsumer(JSON.parse(map))
         getFile('test.build.js', function (code) {
           var line
-          code.split('\n').some(function (l, i) {
-            if (l.indexOf('Hello from Component A') > -1) {
+          var col
+          var targetRE = /^\s+msg: 'Hello from Component A!'/
+          code.split(/\r?\n/g).some(function (l, i) {
+            if (targetRE.test(l)) {
               line = i + 1
+              col = l.length
               return true
             }
           })
           var pos = smc.originalPositionFor({
             line: line,
-            column: 0
+            column: col
           })
-          expect(pos.source.indexOf('webpack:///test/fixtures/basic.vue') > -1)
-          expect(pos.line).to.equal(15)
+          expect(pos.source.indexOf('basic.vue') > -1)
+          expect(pos.line).to.equal(9)
           done()
         })
       })
@@ -205,7 +208,7 @@ describe('vue-loader', function () {
     }), function (err) {
       expect(err).to.be.null
       getFile('test.output.css', function (data) {
-        expect(data).to.contain('h1 {\n  color: #f00;\n}\nh2 {\n  color: green;\n}')
+        expect(data).to.contain('h1 {\n  color: #f00;\n}\n\nh2 {\n  color: green;\n}')
         done()
       })
     })

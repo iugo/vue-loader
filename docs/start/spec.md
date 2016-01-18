@@ -58,7 +58,7 @@ More details can be found in [Using Pre-Processors](../configurations/pre-proces
 
 #### `<style>`
 
-- Defalt Language: `css`.
+- Default Language: `css`.
 
 - Multiple `<style>` tags are supported in a single `*.vue` file.
 
@@ -83,4 +83,4 @@ Beware that `src` imports follow the same path resolution rules to CommonJS `req
 
 ### Syntax Highlighting
 
-Currently there are syntax highlighting support for [Sublime Text](https://github.com/vuejs/vue-syntax-highlight), [Atom](https://atom.io/packages/language-vue), [Vim](https://github.com/posva/vim-vue) and [Visual Studio Code](https://marketplace.visualstudio.com/items/liuji-jim.vue). Contributions for other editors/IDEs are highly appreciated! If you are not using any pre-processors in Vue components, you can also get by by treating `*.vue` files as HTML in your editor.
+Currently there are syntax highlighting support for [Sublime Text](https://github.com/vuejs/vue-syntax-highlight), [Atom](https://atom.io/packages/language-vue), [Vim](https://github.com/posva/vim-vue), [Visual Studio Code](https://marketplace.visualstudio.com/items/liuji-jim.vue) and [Brackets](https://github.com/pandao/brackets-vue). Contributions for other editors/IDEs are highly appreciated! If you are not using any pre-processors in Vue components, you can also get by by treating `*.vue` files as HTML in your editor.
